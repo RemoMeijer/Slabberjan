@@ -1,31 +1,41 @@
 package com.example.slabberjan.Activities;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
-import java.util.concurrent.CountDownLatch;
+
 
 public class ReceivingMessages extends Thread{
 
     private Socket socket;
-    private CountDownLatch socketLatch;
+    private Handler messageHandler;
 
-    public ReceivingMessages(Socket socket) {
+    public ReceivingMessages(Socket socket, Handler messageHandler) {
         this.socket = socket;
-
+        this.messageHandler = messageHandler;
     }
 
     @Override
     public void run() {
         try {
-
             InputStream inputStream = socket.getInputStream();
             DataInputStream dataInputStream = new DataInputStream(inputStream);
 
             while(true) {
                 String message = dataInputStream.readUTF();
                 System.out.println("Got message: " + message);
+
+                Message dataForMainUI = messageHandler.obtainMessage();
+                Bundle bundle = new Bundle();
+                bundle.putString("message", message);
+                dataForMainUI.setData(bundle);
+                messageHandler.sendMessage(dataForMainUI);
+
             }
 
         } catch (IOException e) {
