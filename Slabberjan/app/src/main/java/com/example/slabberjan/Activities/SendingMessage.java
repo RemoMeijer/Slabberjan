@@ -12,9 +12,9 @@ import java.net.Socket;
 public class SendingMessage extends Thread {
 
 
-    private String name;
+    private final String name;
     private String message;
-    private Socket socket;
+    private final Socket socket;
 
 
     public SendingMessage(Socket socket, String name) {

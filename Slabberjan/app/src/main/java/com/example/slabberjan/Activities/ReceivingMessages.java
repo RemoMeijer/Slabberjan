@@ -12,8 +12,8 @@ import java.net.Socket;
 
 public class ReceivingMessages extends Thread{
 
-    private Socket socket;
-    private Handler messageHandler;
+    private final Socket socket;
+    private final Handler messageHandler;
 
     public ReceivingMessages(Socket socket, Handler messageHandler) {
         this.socket = socket;

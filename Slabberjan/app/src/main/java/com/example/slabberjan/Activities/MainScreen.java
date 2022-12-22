@@ -28,10 +28,14 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
+        final String name = intent.getStringExtra("name");
 
-        TextView nameTextView = findViewById(R.id.name);
+        TextView nameTextView = findViewById(R.id.names);
         nameTextView.setText(name);
+        TextView slabberJanToken = findViewById(R.id.slabber_jan_token);
+        slabberJanToken.setText("");
+        TextView allNamesTextView = findViewById(R.id.all_names);
+        allNamesTextView.setText("");
 
         Handler messageFromServerHandler = new Handler(new Handler.Callback() {
             @Override
@@ -39,7 +43,24 @@ public class MainScreen extends AppCompatActivity {
 
                 Bundle bundle = message.getData();
                 String dataFromServer = bundle.getString("message");
-                nameTextView.setText(dataFromServer);
+
+
+                switch (dataFromServer) {
+                    case ("1") :
+                    case ("2") :
+                    case ("3") :
+                    case ("4") :
+                    case ("5") :
+                    case ("6") :
+                    case ("7") :
+                    case ("8") :
+                    case ("9") :
+                    case ("10") :
+                        slabberJanToken.setText(dataFromServer);
+                        break;
+                    default:
+                        allNamesTextView.setText(dataFromServer);
+                }
 
                 return true;
             }
@@ -71,8 +92,7 @@ public class MainScreen extends AppCompatActivity {
             String serverIp = params[0];
             int serverPort = Integer.parseInt(params[1]);
             try {
-                Socket socket = new Socket(serverIp, serverPort);
-                return socket;
+                return new Socket(serverIp, serverPort);
             } catch (IOException e) {
                 return null;
             }
