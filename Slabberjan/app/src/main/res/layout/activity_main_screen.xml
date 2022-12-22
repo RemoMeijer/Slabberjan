@@ -10,29 +10,90 @@
         android:id="@+id/names"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="121dp"
-        android:text="TextView"
+        android:text="Own name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/slabber_jan_token"/>
 
     <TextView
         android:id="@+id/slabber_jan_token"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="83dp"
-        android:text="TextView"
+        android:text="Value"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/names" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/names"
+        app:layout_constraintBottom_toTopOf="@id/all_names"/>
 
     <TextView
         android:id="@+id/all_names"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="80dp"
-        android:text="TextView"
+        android:text="all Names Online"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slabber_jan_token" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/names"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/names"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/value_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Value of Token"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/slabber_jan_token"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/names_online_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All Names Online"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/all_names"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/trade_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trade"
+        app:layout_constraintTop_toBottomOf="@id/all_names"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/keep_button" />
+
+    <Button
+        android:id="@+id/keep_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Keep"
+        app:layout_constraintTop_toBottomOf="@id/all_names"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/trade_button"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

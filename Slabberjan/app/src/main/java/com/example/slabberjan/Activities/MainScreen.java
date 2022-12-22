@@ -8,6 +8,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.slabberjan.R;
@@ -36,6 +38,11 @@ public class MainScreen extends AppCompatActivity {
         slabberJanToken.setText("");
         TextView allNamesTextView = findViewById(R.id.all_names);
         allNamesTextView.setText("");
+        TextView status = findViewById(R.id.status);
+        status.setText("Waiting for other players");
+
+        Button tradeButton = findViewById(R.id.trade_button);
+        Button keepButton = findViewById(R.id.keep_button);
 
         Handler messageFromServerHandler = new Handler(new Handler.Callback() {
             @Override
@@ -44,8 +51,8 @@ public class MainScreen extends AppCompatActivity {
                 Bundle bundle = message.getData();
                 String dataFromServer = bundle.getString("message");
 
-
                 switch (dataFromServer) {
+                    case ("0") :
                     case ("1") :
                     case ("2") :
                     case ("3") :
@@ -57,6 +64,10 @@ public class MainScreen extends AppCompatActivity {
                     case ("9") :
                     case ("10") :
                         slabberJanToken.setText(dataFromServer);
+                        break;
+
+                    case ("Players Turn!") :
+                        status.setText("Your turn!");
                         break;
                     default:
                         allNamesTextView.setText(dataFromServer);
@@ -79,6 +90,20 @@ public class MainScreen extends AppCompatActivity {
 
         ReceivingMessages receivingMessages = new ReceivingMessages(this.socket, messageFromServerHandler);
         receivingMessages.start();
+
+        tradeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMessage("Trade");
+            }
+        });
+
+        keepButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMessage("Keep");
+            }
+        });
 
     }
 
