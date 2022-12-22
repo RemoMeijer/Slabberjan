@@ -13,24 +13,23 @@ import com.example.slabberjan.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button sendButton;
-    EditText nameField;
-
-
+    private Button sendButton;
+    private EditText nameField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sendButton = findViewById(R.id.button);
-        nameField = findViewById(R.id.device_name);
+        this.sendButton = findViewById(R.id.button);
+        this.nameField = findViewById(R.id.device_name);
 
-        sendButton.setOnClickListener(new View.OnClickListener() {
+        this.sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = nameField.getText().toString();
-                //If a name is filled in, pass it on to the server
+
+                //If a name is filled in, pass it on to the next activity
                 if(!name.isEmpty()) {
                     Intent switchToMainScreen = new Intent(MainActivity.this, MainScreen.class);
                     switchToMainScreen.putExtra("name", name);

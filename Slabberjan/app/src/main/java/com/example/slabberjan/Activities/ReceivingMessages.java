@@ -23,18 +23,18 @@ public class ReceivingMessages extends Thread{
     @Override
     public void run() {
         try {
-            InputStream inputStream = socket.getInputStream();
+            InputStream inputStream = this.socket.getInputStream();
             DataInputStream dataInputStream = new DataInputStream(inputStream);
 
             while(true) {
                 String message = dataInputStream.readUTF();
                 System.out.println("Got message: " + message);
 
-                Message dataForMainUI = messageHandler.obtainMessage();
+                Message dataForMainUI = this.messageHandler.obtainMessage();
                 Bundle bundle = new Bundle();
                 bundle.putString("message", message);
                 dataForMainUI.setData(bundle);
-                messageHandler.sendMessage(dataForMainUI);
+                this.messageHandler.sendMessage(dataForMainUI);
 
             }
 
