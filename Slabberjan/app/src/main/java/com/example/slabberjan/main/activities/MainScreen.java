@@ -1,4 +1,4 @@
-package com.example.slabberjan.Activities;
+package com.example.slabberjan.main.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.slabberjan.R;
+import com.example.slabberjan.main.ServerCommunication.ReceivingMessages;
+import com.example.slabberjan.main.ServerCommunication.SendingMessage;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -51,8 +53,7 @@ public class MainScreen extends AppCompatActivity {
         tradeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                sendingMessage.setMessage("Trade button clicked with socket: " + socket);
-
+                //todo send messages to sever
             }
         });
 

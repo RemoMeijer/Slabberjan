@@ -1,4 +1,4 @@
-package com.example.slabberjan.Activities;
+package com.example.slabberjan.main.ServerCommunication;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

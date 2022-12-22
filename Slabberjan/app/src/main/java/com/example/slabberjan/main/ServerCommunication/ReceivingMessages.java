@@ -1,4 +1,4 @@
-package com.example.slabberjan.Activities;
+package com.example.slabberjan.main.ServerCommunication;
 
 import android.os.Bundle;
 import android.os.Handler;
